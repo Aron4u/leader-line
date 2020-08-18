@@ -9,7 +9,7 @@ module.exports = grunt => {
     pathUtil = require('path'),
     htmlclean = require('htmlclean'),
     CleanCSS = require('clean-css'),
-    uglify = require('uglify-js'),
+    terser = require('terser'),
     preProc = require('pre-proc'),
 
     ROOT_PATH = __dirname,
@@ -44,7 +44,7 @@ module.exports = grunt => {
   }
 
   function minJs(content) {
-    return uglify.minify(content).code;
+    return terser.minify(content).code;
   }
 
   grunt.initConfig({

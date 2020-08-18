@@ -10,7 +10,8 @@
 /* eslint no-underscore-dangle: [2, {"allow": ["_id"]}] */
 /* global traceLog:false */
 
-;var LeaderLine = (function() { // eslint-disable-line no-extra-semi
+/* pinkhominid: support EcmaScript Module usage */
+;export var LeaderLine = (function() { // eslint-disable-line no-extra-semi
   'use strict';
 
   /**
