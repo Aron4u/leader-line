@@ -362,10 +362,12 @@
       console.error('Cannot get document that contains the element.');
       return null;
     }
-    if (element.compareDocumentPosition(doc) & Node.DOCUMENT_POSITION_DISCONNECTED) {
-      console.error('A disconnected element was passed.');
-      return null;
-    }
+
+    /* pinkhominid: remove disconnected check to support elements in Shadow DOM */
+    // if (element.compareDocumentPosition(doc) & Node.DOCUMENT_POSITION_DISCONNECTED) {
+    //   console.error('A disconnected element was passed.');
+    //   return null;
+    // }
 
     rect = element.getBoundingClientRect();
     for (prop in rect) { bBox[prop] = rect[prop]; } // eslint-disable-line guard-for-in
