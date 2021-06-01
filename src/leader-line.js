@@ -239,7 +239,7 @@
         a !== b
       );
   }
-  window.hasChanged = hasChanged; // [DEBUG/]
+  // // window.hasChanged = hasChanged; // [DEBUG/]
 
   function copyTree(obj) {
     return !obj ? obj :
@@ -249,7 +249,7 @@
       }, {}) :
       Array.isArray(obj) ? obj.map(copyTree) : obj;
   }
-  window.copyTree = copyTree; // [DEBUG/]
+  // window.copyTree = copyTree; // [DEBUG/]
 
   /**
    * Parse and get an alpha channel in color notation.
@@ -305,7 +305,7 @@
     }
     return [alpha, baseColor];
   }
-  window.getAlpha = getAlpha; // [DEBUG/]
+  // window.getAlpha = getAlpha; // [DEBUG/]
 
   /**
    * Add `mouseenter` and `mouseleave` event listeners to the element.
@@ -352,7 +352,7 @@
       };
     }
   }
-  window.mouseEnterLeave = mouseEnterLeave; // [DEBUG/]
+  // window.mouseEnterLeave = mouseEnterLeave; // [DEBUG/]
 
   function isElement(element) {
     // The checking the interface may not be required.
@@ -362,7 +362,7 @@
     return !!(element && element.nodeType === Node.ELEMENT_NODE &&
       typeof element.getBoundingClientRect === 'function');
   }
-  window.isElement = isElement; // [DEBUG/]
+  // window.isElement = isElement; // [DEBUG/]
 
   /**
    * Get an element's bounding-box that contains coordinates relative to the element's document or window.
@@ -399,7 +399,7 @@
 
     return bBox;
   }
-  window.getBBox = getBBox; // [DEBUG/]
+  // window.getBBox = getBBox; // [DEBUG/]
 
   /**
    * Get distance between an element's bounding-box and its content (`<iframe>` element and its document).
@@ -470,7 +470,7 @@
     bBox.bottom += top;
     return bBox;
   }
-  window.getBBoxNest = getBBoxNest; // [DEBUG/]
+  // window.getBBoxNest = getBBoxNest; // [DEBUG/]
 
   /**
    * Get a common ancestor window.
@@ -498,13 +498,13 @@
     }
     return commonWindow || window;
   }
-  window.getCommonWindow = getCommonWindow; // [DEBUG/]
+  // window.getCommonWindow = getCommonWindow; // [DEBUG/]
 
   function getPointsLength(p0, p1) {
     var lx = p0.x - p1.x, ly = p0.y - p1.y;
     return Math.sqrt(lx * lx + ly * ly);
   }
-  window.getPointsLength = getPointsLength; // [DEBUG/]
+  // window.getPointsLength = getPointsLength; // [DEBUG/]
 
   function getPointOnLine(p0, p1, r) {
     var xA = p1.x - p0.x, yA = p1.y - p0.y;
@@ -514,7 +514,7 @@
       angle: Math.atan2(yA, xA) / (Math.PI / 180)
     };
   }
-  window.getPointOnLine = getPointOnLine; // [DEBUG/]
+  // window.getPointOnLine = getPointOnLine; // [DEBUG/]
 
   function getIntersection(line1P0, line1P1, line2P0, line2P1) {
     var sx1 = line1P1.x - line1P0.x, sy1 = line1P1.y - line1P0.y,
@@ -525,13 +525,13 @@
     return s >= 0 && s <= 1 && t >= 0 && t <= 1 ?
       {x: line1P0.x + (t * sx1), y: line1P0.y + (t * sy1)} : null;
   }
-  window.getIntersection = getIntersection; // [DEBUG/]
+  // window.getIntersection = getIntersection; // [DEBUG/]
 
   function extendLine(p0, p1, len) {
     var angle = Math.atan2(p0.y - p1.y, p1.x - p0.x);
     return {x: p1.x + Math.cos(angle) * len, y: p1.y + Math.sin(angle) * len * -1};
   }
-  window.extendLine = extendLine; // [DEBUG/]
+  // window.extendLine = extendLine; // [DEBUG/]
 
   function getPointOnCubic(p0, p1, p2, p3, t) {
     var
@@ -565,7 +565,7 @@
     };
     /* eslint-enable key-spacing */
   }
-  window.getPointOnCubic = getPointOnCubic; // [DEBUG/]
+  // window.getPointOnCubic = getPointOnCubic; // [DEBUG/]
 
   function getCubicLength(p0, p1, p2, p3, t) {
     function base3(t, p0v, p1v, p2v, p3v) {
@@ -591,7 +591,7 @@
     });
     return z2 * sum;
   }
-  window.getCubicLength = getCubicLength; // [DEBUG/]
+  // window.getCubicLength = getCubicLength; // [DEBUG/]
 
   function getCubicT(p0, p1, p2, p3, len) {
     var E = 0.01,
@@ -604,7 +604,7 @@
     }
     return t2;
   }
-  window.getCubicT = getCubicT; // [DEBUG/]
+  // window.getCubicT = getCubicT; // [DEBUG/]
 
   function getOffsetLine(p0, p1, offsetLen) {
     var angle = Math.atan2(p0.y - p1.y, p1.x - p0.x) + Math.PI * 0.5;
@@ -613,7 +613,7 @@
       {x: p1.x + Math.cos(angle) * offsetLen, y: p1.y + Math.sin(angle) * offsetLen * -1}
     ];
   }
-  window.getOffsetLine = getOffsetLine; // [DEBUG/]
+  // window.getOffsetLine = getOffsetLine; // [DEBUG/]
 
   function getOffsetCubic(p0, p1, p2, p3, offsetLen, stepLen) {
     var parts = getCubicLength(p0, p1, p2, p3) / stepLen,
@@ -633,7 +633,7 @@
     }
     return points;
   }
-  window.getOffsetCubic = getOffsetCubic; // [DEBUG/]
+  // window.getOffsetCubic = getOffsetCubic; // [DEBUG/]
 
   function pathList2PathData(pathList, cbPoint) {
     var pathData;
@@ -692,7 +692,7 @@
       return pathLenAll;
     }, 0);
   }
-  window.getAllPathDataLen = getAllPathDataLen; // [DEBUG/]
+  // window.getAllPathDataLen = getAllPathDataLen; // [DEBUG/]
 
   function pathDataHasChanged(a, b) {
     return a == null || b == null ||
@@ -702,7 +702,7 @@
           aSeg.values.some(function(aSegValue, i) { return aSegValue !== bSeg.values[i]; });
       });
   }
-  window.pathDataHasChanged = pathDataHasChanged; // [DEBUG/]
+  // window.pathDataHasChanged = pathDataHasChanged; // [DEBUG/]
 
   function bBox2PathData(bBox) {
     var right = bBox.right != null ? bBox.right : bBox.left + bBox.width,
@@ -751,7 +751,7 @@
       parent.insertBefore(parent.removeChild(target), next);
     }, 0);
   }
-  window.forceReflow = forceReflow; // [DEBUG/]
+  // window.forceReflow = forceReflow; // [DEBUG/]
 
   function forceReflowAdd(props, target) {
     if (props.reflowTargets.indexOf(target) < 0) { props.reflowTargets.push(target); }
@@ -860,7 +860,7 @@
     }
     return dropShadow;
   }
-  window.newDropShadow = newDropShadow; // [DEBUG/]
+  // window.newDropShadow = newDropShadow; // [DEBUG/]
 
   function initStats(container, statsConf) {
     Object.keys(statsConf).forEach(function(statName) {
@@ -1139,7 +1139,7 @@
 
     traceLog.add('</bindWindow>'); // [DEBUG/]
   }
-  window.bindWindow = bindWindow; // [DEBUG/]
+  // window.bindWindow = bindWindow; // [DEBUG/]
 
   /**
    * @param {props} props - `props` of `LeaderLine` instance.
@@ -3123,7 +3123,7 @@
       }
     }
   };
-  window.EFFECTS = EFFECTS; // [DEBUG/]
+  // window.EFFECTS = EFFECTS; // [DEBUG/]
 
   Object.keys(EFFECTS).forEach(function(effectName) {
     var effectConf = EFFECTS[effectName], effectStats = effectConf.stats;
@@ -3631,7 +3631,7 @@
 
     return LeaderLineAttachment;
   })();
-  window.LeaderLineAttachment = LeaderLineAttachment;
+  // window.LeaderLineAttachment = LeaderLineAttachment;
 
   /**
    * @param {any} obj - An object to be checked.
@@ -5168,7 +5168,7 @@
       }
     }
   };
-  window.ATTACHMENTS = ATTACHMENTS; // [DEBUG/]
+  // window.ATTACHMENTS = ATTACHMENTS; // [DEBUG/]
 
   Object.keys(ATTACHMENTS).forEach(function(attachmentName) {
     LeaderLine[attachmentName] = function() {
