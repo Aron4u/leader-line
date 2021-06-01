@@ -76,7 +76,7 @@
     DEFAULT_END_PLUG = @INCLUDE[code:DEFAULT_END_PLUG]@,
     [DEBUG/] */
     // [DEBUG]
-    if(window){
+    if(typeof window !== 'undefined'){
       var DEFS_HTML = window.DEFS_HTML,
       SYMBOLS = window.SYMBOLS,
       PLUG_KEY_2_ID = window.PLUG_KEY_2_ID,
@@ -97,7 +97,7 @@
     RE_PERCENT = /^\s*(\-?[\d\.]+)\s*(\%)?\s*$/,
     SVG_NS = 'http://www.w3.org/2000/svg';
 
-    if(document){
+    if(typeof document !== 'undefined'){
       var IS_EDGE = '-ms-scroll-limit' in document.documentElement.style &&
         '-ms-ime-align' in document.documentElement.style && !window.navigator.msPointerEnabled,
       IS_TRIDENT = !IS_EDGE && !!document.uniqueID, // Future Edge might support `document.uniqueID`.
@@ -140,15 +140,21 @@
     /* [DEBUG/]
     anim = @INCLUDE[code:anim]@,
     [DEBUG/] */
-    anim = window.anim, // [DEBUG/]
+    
+    ;if(typeof window !== 'undefined'){
+    var anim = window.anim, // [DEBUG/]
+    }
     /* [DEBUG/]
     pathDataPolyfill = @INCLUDE[code:pathDataPolyfill]@,
     [DEBUG/] */
-    pathDataPolyfill = window.pathDataPolyfill, // [DEBUG/]
+    var pathDataPolyfill = window.pathDataPolyfill, // [DEBUG/]
     /* [DEBUG/]
     AnimEvent = @INCLUDE[code:AnimEvent]@,
     [DEBUG/] */
-    AnimEvent = window.AnimEvent, // [DEBUG/]
+    
+    if(typeof window !== 'undefined'){
+    var AnimEvent = window.AnimEvent, // [DEBUG/]
+    }
 
     /** @typedef {{hasSE, hasProps, iniValue}} StatConf */
     /** @type {{statId: string, StatConf}} */
@@ -199,6 +205,8 @@
     svg2SupportedReverse, svg2SupportedPaintOrder, svg2SupportedDropShadow; // Supported SVG 2 features
 
   // [DEBUG]
+  
+  if(typeof window !== 'undefined'){
   window.insProps = insProps;
   window.insAttachProps = insAttachProps;
   window.isObject = isObject;
@@ -214,6 +222,7 @@
     if (typeof flags.IS_EDGE === 'boolean') { window.IS_EDGE = IS_EDGE = flags.IS_EDGE; }
     if (typeof flags.IS_WEBKIT === 'boolean') { window.IS_WEBKIT = IS_WEBKIT = flags.IS_WEBKIT; }
   };
+}
   // [/DEBUG]
 
   function hasChanged(a, b) {
