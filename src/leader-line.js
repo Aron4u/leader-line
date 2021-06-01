@@ -67,7 +67,7 @@
     /** @typedef {{symbolId: string, SymbolConf}} SYMBOLS */
 
     PLUG_BEHIND = 'behind',
-    DEFS_ID = APP_ID + '-defs',
+    DEFS_ID = APP_ID + '-defs';
     /* [DEBUG/]
     DEFS_HTML = @INCLUDE[code:DEFS_HTML]@,
     SYMBOLS = @INCLUDE[code:SYMBOLS]@,
@@ -76,14 +76,16 @@
     DEFAULT_END_PLUG = @INCLUDE[code:DEFAULT_END_PLUG]@,
     [DEBUG/] */
     // [DEBUG]
-    DEFS_HTML = window.DEFS_HTML,
-    SYMBOLS = window.SYMBOLS,
-    PLUG_KEY_2_ID = window.PLUG_KEY_2_ID,
-    PLUG_2_SYMBOL = window.PLUG_2_SYMBOL,
-    DEFAULT_END_PLUG = window.DEFAULT_END_PLUG,
+    if(window){
+      var DEFS_HTML = window.DEFS_HTML,
+      SYMBOLS = window.SYMBOLS,
+      PLUG_KEY_2_ID = window.PLUG_KEY_2_ID,
+      PLUG_2_SYMBOL = window.PLUG_2_SYMBOL,
+      DEFAULT_END_PLUG = window.DEFAULT_END_PLUG;
+    }
     // [/DEBUG]
 
-    SOCKET_IDS = [SOCKET_TOP, SOCKET_RIGHT, SOCKET_BOTTOM, SOCKET_LEFT],
+    var SOCKET_IDS = [SOCKET_TOP, SOCKET_RIGHT, SOCKET_BOTTOM, SOCKET_LEFT],
     KEYWORD_AUTO = 'auto',
     BBOX_PROP = {x: 'left', y: 'top', width: 'width', height: 'height'},
 
@@ -93,19 +95,21 @@
 
     CIRCLE_CP = 0.5522847, CIRCLE_8_RAD = 1 / 4 * Math.PI,
     RE_PERCENT = /^\s*(\-?[\d\.]+)\s*(\%)?\s*$/,
-    SVG_NS = 'http://www.w3.org/2000/svg',
+    SVG_NS = 'http://www.w3.org/2000/svg';
 
-    IS_EDGE = '-ms-scroll-limit' in document.documentElement.style &&
-      '-ms-ime-align' in document.documentElement.style && !window.navigator.msPointerEnabled,
-    IS_TRIDENT = !IS_EDGE && !!document.uniqueID, // Future Edge might support `document.uniqueID`.
-    IS_GECKO = 'MozAppearance' in document.documentElement.style,
-    IS_BLINK = !IS_EDGE && !IS_GECKO && // Edge has `window.chrome`, and future Gecko might have that.
-      !!window.chrome && !!window.CSS,
-    IS_WEBKIT = !IS_EDGE && !IS_TRIDENT &&
-      !IS_GECKO && !IS_BLINK && // Some engines support `webkit-*` properties.
-      !window.chrome && 'WebkitAppearance' in document.documentElement.style,
+    if(document){
+      var IS_EDGE = '-ms-scroll-limit' in document.documentElement.style &&
+        '-ms-ime-align' in document.documentElement.style && !window.navigator.msPointerEnabled,
+      IS_TRIDENT = !IS_EDGE && !!document.uniqueID, // Future Edge might support `document.uniqueID`.
+      IS_GECKO = 'MozAppearance' in document.documentElement.style,
+      IS_BLINK = !IS_EDGE && !IS_GECKO && // Edge has `window.chrome`, and future Gecko might have that.
+        !!window.chrome && !!window.CSS,
+      IS_WEBKIT = !IS_EDGE && !IS_TRIDENT &&
+        !IS_GECKO && !IS_BLINK && // Some engines support `webkit-*` properties.
+        !window.chrome && 'WebkitAppearance' in document.documentElement.style;
+    }
 
-    SHAPE_GAP = IS_TRIDENT || IS_EDGE ? 0.2 : 0.1,
+    var SHAPE_GAP = IS_TRIDENT || IS_EDGE ? 0.2 : 0.1,
 
     DEFAULT_OPTIONS = {
       path: PATH_FLUID,
